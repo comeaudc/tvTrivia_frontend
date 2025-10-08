@@ -7,7 +7,7 @@ export default function RegisterForm({ setNewUser }) {
 
   return (
     <div className="forms">
-      <h2>SignUp</h2>
+      <h2>Register</h2>
       <form>
         <label>
           Name:
