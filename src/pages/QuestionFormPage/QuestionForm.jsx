@@ -1,3 +1,9 @@
-export default function QuestionFormPage(){
-    return <h1>Question Form Page</h1>
+import QuestionForm from "../../components/QuestionForm/QuestionForm";
+
+export default function QuestionFormPage() {
+  return (
+    <>
+      <QuestionForm />
+    </>
+  );
 }

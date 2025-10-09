@@ -3,7 +3,8 @@
   margin: 2rem auto;
   padding: 2rem;
   border-radius: 10px;
-  background-color: #f9f9f9;
+  background-color: var(--babyBlue);
+  color: var(--blue);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -41,7 +42,7 @@ input[type="submit"] {
   margin-top: 1rem;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: var(--blue);
   color: white;
   font-size: 1rem;
   cursor: pointer;
@@ -60,7 +61,7 @@ input[type="submit"]:hover {
 .forms button {
   border: none;
   background: none;
-  color: #007bff;
+  color: var(--blue);
   cursor: pointer;
   font-weight: 600;
 }

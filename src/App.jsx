@@ -10,20 +10,23 @@ import QuestionFormPage from "./pages/QuestionFormPage/QuestionForm";
 
 // Components
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import Nav from "./components/Nav/Nav";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/auth" element={<AuthPage />} />
+      <Nav />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/auth" element={<AuthPage />} />
 
-        <Route element={<ProtectedRoutes />}>
-          <Route path="/dash" element={<DashboardPage />} />
-          <Route path="/game" element={<GamePage />} />
-          <Route path="/question" element={<QuestionFormPage />} />
-        </Route>
-      </Routes>
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/dash" element={<DashboardPage />} />
+            <Route path="/game" element={<GamePage />} />
+          </Route>
+        </Routes>
+      </main>
     </>
   );
 }
