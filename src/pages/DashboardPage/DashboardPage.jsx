@@ -1,21 +1,24 @@
-import { useAuth } from "../../context/authContext/authContext";
-import { useNavigate } from "react-router-dom";
-import QuestionForm from '../../components/QuestionForm/QuestionForm';
-import CategoryForm from "../../components/CategoryForm/CategoryForm";
+import { useUser } from "../../context/userContext/userContext";
+
+// Components
+import AdminDash from "../../components/DashboardComponents/AdminDash";
+import UserDash from "../../components/DashboardComponents/UserDash";
 
 export default function DashboardPage() {
-  const { logout } = useAuth();
-  const nav = useNavigate();
+  const { user } = useUser(); // User Context
 
-  function handleLogout() {
-    logout();
-    nav("/auth");
-  }
-  return (
-    <>
-      <h1>Dashboard Page</h1>
-      <QuestionForm />
-      <CategoryForm />
-    </>
-  );
+  const loading = () => {
+    return <h1>Loading</h1>;
+  };
+
+  const loaded = () => {
+    return (
+      <>
+        <h1>Welcome {user.userName}!</h1>
+        {user.isAdmin ? <AdminDash /> : <UserDash />}
+      </>
+    );
+  };
+
+  return user ? loaded() : loading();
 }
