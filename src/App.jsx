@@ -3,6 +3,7 @@ import "./App.css";
 import { useEffect } from "react";
 import { useUser } from "./context/userContext/userContext";
 import { useAuth } from "./context/authContext/authContext";
+import axios from "axios";
 import apiService from "./utilities/apiService.mjs";
 
 // Pages
@@ -17,13 +18,18 @@ import Nav from "./components/Nav/Nav";
 
 function App() {
   const { cookies, logout } = useAuth();
-  const { setUser } = useUser();
+  const { setUser, setCategory } = useUser();
 
-  async function getUser() {
+  async function getData() {
     try {
-      let res = await apiService.getUser(cookies.token);
+      let res = await axios.get(`http://localhost:3000/api/category`);
+      setCategory(res.data);
+      
+      if (cookies.token) {
+        let res = await apiService.getUser(cookies.token);
 
-      setUser(res);
+        setUser(res);
+      }
     } catch (err) {
       logout();
       console.error(err);
@@ -31,9 +37,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (cookies.token) {
-      getUser();
-    }
+    getData();
   }, [cookies.token]);
 
   return (
