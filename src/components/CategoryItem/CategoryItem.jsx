@@ -23,9 +23,12 @@ export default function CategoryItem({
 
       if (!answer) return;
 
-      await axios.delete(`http://localhost:3000/api/category/${_id}`, {
-        headers: { "x-auth-token": token },
-      });
+      await axios.delete(
+        `https://tvtrivia-backend.onrender.com/api/category/${_id}`,
+        {
+          headers: { "x-auth-token": token },
+        }
+      );
       let newCatState = category.filter((cat) => cat._id !== _id);
 
       setCategory(newCatState);
@@ -39,16 +42,18 @@ export default function CategoryItem({
 
     try {
       let updatedCat = await axios.put(
-        `http://localhost:3000/api/category/${_id}`,
-        formData
+        `https://tvtrivia-backend.onrender.com/api/category/${_id}`,
+        formData,
+        {
+          headers: { "x-auth-token": token },
+        }
       );
-  
 
-      let insertPoint = category.findIndex(cat => cat._id === _id)
+      let insertPoint = category.findIndex((cat) => cat._id === _id);
 
-      let newCats = [...category]
+      let newCats = [...category];
 
-      newCats.splice(insertPoint, 1, updatedCat.data)
+      newCats.splice(insertPoint, 1, updatedCat.data);
 
       setCategory(newCats);
       setEdit(false);

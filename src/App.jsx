@@ -22,9 +22,11 @@ function App() {
 
   async function getData() {
     try {
-      let res = await axios.get(`http://localhost:3000/api/category`);
+      let res = await axios.get(
+        `https://tvtrivia-backend.onrender.com/api/category`
+      );
       setCategory(res.data);
-      
+
       if (cookies.token) {
         let res = await apiService.getUser(cookies.token);
 

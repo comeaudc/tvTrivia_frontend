@@ -1,9 +1,8 @@
 import axios from "axios";
 
-let baseURL = "http://localhost:3000/api";
+let baseURL = "https://tvtrivia-backend.onrender.com/api";
 
 async function getUser(token) {
-    
   let res = await axios.get(`${baseURL}/auth`, {
     headers: { "x-auth-token": token },
   });

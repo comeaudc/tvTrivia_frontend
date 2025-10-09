@@ -8,7 +8,6 @@ export default function CategoryForm({
   token,
   setCreate,
 }) {
-  
   const [formData, setFormData] = useState({
     name: "",
     isActive: false,
@@ -29,7 +28,7 @@ export default function CategoryForm({
     e.preventDefault();
     try {
       let res = await axios.post(
-        "http://localhost:3000/api/category",
+        "https://tvtrivia-backend.onrender.com/api/category",
         formData,
         {
           headers: {
