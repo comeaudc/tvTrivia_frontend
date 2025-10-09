@@ -8,6 +8,7 @@ export default function Nav() {
   function handleLogout() {
     logout();
   }
+  
   return (
     <nav className={style.nav}>
       <Link to={"/"}>

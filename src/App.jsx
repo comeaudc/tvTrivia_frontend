@@ -1,18 +1,41 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { useEffect } from "react";
+import { useUser } from "./context/userContext/userContext";
+import { useAuth } from "./context/authContext/authContext";
+import apiService from "./utilities/apiService.mjs";
 
 // Pages
 import HomePage from "./pages/HomePage/HomePage";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import GamePage from "./pages/GamePage/GamePage";
-import QuestionFormPage from "./pages/QuestionFormPage/QuestionForm";
 
 // Components
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Nav from "./components/Nav/Nav";
 
 function App() {
+  const { cookies, logout } = useAuth();
+  const { setUser } = useUser();
+
+  async function getUser() {
+    try {
+      let res = await apiService.getUser(cookies.token);
+
+      setUser(res);
+    } catch (err) {
+      logout();
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    if (cookies.token) {
+      getUser();
+    }
+  }, [cookies.token]);
+
   return (
     <>
       <Nav />
