@@ -30,7 +30,7 @@ export default function GamePage() {
     return (
       <div className={style.container}>
         <CategoryChoice setGenre={setGenre} category={category} />
-        {/* {questions && <button>Ready to start?</button>} */}
+        {questions && <button><h3>Ready to start?</h3></button>}
       </div>
     );
   }

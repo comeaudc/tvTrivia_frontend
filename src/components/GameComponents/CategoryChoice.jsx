@@ -14,15 +14,13 @@ export default function CategoryChoice({ category, setGenre }) {
   }
 
   return (
-    <div className={style.container}>
-      <label className={style.choice}>
-        {" "}
-        <h2>Choose a category:</h2>
-        <select name="category" onChange={handleChange}>
-          <option>Select a category</option>
-          {categories}
-        </select>
-      </label>
-    </div>
+    <label className={style.choice}>
+      {" "}
+      <h2>Choose a category:</h2>
+      <select name="category" onChange={handleChange}>
+        <option>Select a category</option>
+        {categories}
+      </select>
+    </label>
   );
 }
