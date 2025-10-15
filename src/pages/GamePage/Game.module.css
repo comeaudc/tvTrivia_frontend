@@ -1,0 +1,17 @@
+.choice{
+    max-width: 25%;
+}
+
+.choice > select {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
