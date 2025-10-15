@@ -19,3 +19,9 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.startBtn {
+    padding: .75rem;
+    border-radius: 25px;
+    background-color: var(--pineGreen);
+}
