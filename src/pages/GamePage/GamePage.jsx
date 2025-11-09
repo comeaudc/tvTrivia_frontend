@@ -8,6 +8,7 @@ export default function GamePage() {
   const { category } = useUser();
   const [genre, setGenre] = useState(null);
   const [questions, setQuestions] = useState(null);
+  const [playing, setPlaying] = useState(null);
 
   useEffect(() => {
     if (genre) {
@@ -26,11 +27,15 @@ export default function GamePage() {
     }
   }, [genre]);
 
+  function handleStartGame (){
+    setPlaying(true)
+  }
+
   function loaded() {
     return (
       <div className={style.container}>
-        <CategoryChoice setGenre={setGenre} category={category} />
-        {questions && <button className={style.startBtn}><h3>Ready to start?</h3></button>}
+       {!playing? <CategoryChoice setGenre={setGenre} category={category} /> : <h1>You are playing</h1>}
+        {questions && !playing && <button className={style.startBtn} onClick={handleStartGame}><h3>Ready to start?</h3></button>}
       </div>
     );
   }

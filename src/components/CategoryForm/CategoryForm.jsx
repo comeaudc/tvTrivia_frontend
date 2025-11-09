@@ -28,7 +28,7 @@ export default function CategoryForm({
     e.preventDefault();
     try {
       let res = await axios.post(
-        "https://tvtrivia-backend.onrender.com/api/category",
+        "http://localhost:3000/api/category",
         formData,
         {
           headers: {
